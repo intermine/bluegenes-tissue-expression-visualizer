@@ -40,8 +40,8 @@ const geneToExpressionQuery = ({ geneId, orgName }) => ({
 			value: orgName
 		},
 		{
-			path: 'Gene',
-			op: 'LOOKUP',
+			path: 'Gene.id',
+			op: '=',
 			value: geneId
 		}
 	]
@@ -56,10 +56,9 @@ function queryData(geneId, serviceUrl) {
 			.then(data => {
 				if (data.length === 0) throw new Error('No organism associated!');
 				const orgName = data[0].organism.name;
-				// console.log(orgName, geneId);
 				service
 					.records(geneToExpressionQuery({ geneId, orgName }))
-					.then(resolve)
+					.then(data => resolve(data[0]))
 					.catch(reject);
 			})
 			.catch(reject);
