@@ -1,6 +1,15 @@
 import React from 'react';
+import { queryData } from './queryData';
 
 class RootContainer extends React.Component {
+	componentDidMount() {
+		const {
+			entity: { value: geneId },
+			serviceUrl
+		} = this.props;
+		queryData(geneId, serviceUrl);
+	}
+
 	render() {
 		return (
 			<div className="rootContainer">
