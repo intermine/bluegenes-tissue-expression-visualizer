@@ -65,4 +65,4 @@ function queryData(geneId, serviceUrl) {
 	});
 }
 
-export { queryData };
+export default queryData;
