@@ -13,5 +13,45 @@
 	.rootContainer {
 		border: 1px solid black;
 		padding: 20px;
+		display: grid;
 	}
+
+	.loading {
+		display: flex;
+		width: 3.5em;
+		height: 3.5em;
+		border: 3px solid transparent;
+		border-top-color: #21B4E7;
+		border-bottom-color: #21B4E7;
+		border-radius: 50%;
+		animation: spin 1.5s linear infinite;
+	}
+	
+	.loading:before {
+		content: '';
+		display: block;
+		margin: auto;
+		width: 0.75em;
+		height: 0.75em;
+		border: 3px solid #21B4E7;
+		border-radius: 50%;
+		animation: pulse 1s alternate ease-in-out infinite;
+	}
+	
+	@keyframes spin {
+		to {
+			transform: rotate(360deg);
+		}
+	}
+	
+	@keyframes pulse {
+		from {
+			transform: scale(0.5);
+		}
+		to {
+			transform: scale(1.5);
+		}
+	}
+	
+
 }
