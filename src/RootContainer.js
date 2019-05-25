@@ -1,4 +1,5 @@
 import React from 'react';
+import renderTissueExpressionChart from './renderTissueExpressionChart';
 import { queryData } from './queryData';
 
 const getColor = affyCall => {
@@ -15,6 +16,12 @@ class RootContainer extends React.Component {
 		} = this.props;
 		queryData(geneId, serviceUrl).then(res => {
 			const results = res.microArrayResults;
+			results.sort((r1, r2) => {
+				const textA = r1.tissue.name.toUpperCase();
+				const textB = r2.tissue.name.toUpperCase();
+				return textA < textB ? -1 : textA > textB ? 1 : 0;
+			});
+
 			const chartData = {
 				enrichments: [],
 				tissueNames: [],
@@ -26,7 +33,10 @@ class RootContainer extends React.Component {
 				chartData.tissueNames.push(result.tissue.name);
 				chartData.colors.push(getColor(result.affyCall));
 			});
-			// console.log(enrichments);
+
+			// console.log(chartData);
+
+			renderTissueExpressionChart(this.firstGraph, chartData);
 		});
 		// .catch(console.error);
 	}
@@ -35,17 +45,18 @@ class RootContainer extends React.Component {
 		return (
 			<div className="rootContainer">
 				<div className="firstGraph">
-					<div className="graph">
-						<h1>First Graph</h1>
-					</div>
+					<canvas
+						className="graph"
+						ref={r => {
+							this.firstGraph = r;
+						}}
+					/>
 					<div className="controls">
 						<span>Controls</span>
 					</div>
 				</div>
 				<div className="secondGraph">
-					<div className="graph">
-						<h1>Second Graph</h1>
-					</div>
+					<canvas className="graph" />
 					<div className="controls">
 						<span>Controls</span>
 					</div>
