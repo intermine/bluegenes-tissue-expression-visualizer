@@ -7,6 +7,7 @@ import {
 	getChartData as getTissueExpChartData
 } from './tissueExpression';
 import {
+	chart as StageExpressionChart,
 	queryData as queryStageExpression,
 	getChartData as getStageExpressionChartData
 } from './stageExpression';
@@ -50,8 +51,8 @@ class RootContainer extends React.Component {
 			// fetch data for expression by stage graph
 			queryStageExpression(geneId, orgName, serviceUrl).then(res => {
 				const results = res.rnaSeqResults;
-				getStageExpressionChartData(results);
-				// console.log(chartData);
+				const chartData = getStageExpressionChartData(results);
+				this.setState({ stageExpressionChartData: chartData });
 			});
 		});
 	}
@@ -92,7 +93,13 @@ class RootContainer extends React.Component {
 					)}
 				</div>
 				<div className="secondGraph">
-					<canvas className="graph" />
+					{this.state.stageExpressionChartData ? (
+						<StageExpressionChart
+							chartData={this.state.stageExpressionChartData}
+						/>
+					) : (
+						'Loading...'
+					)}
 				</div>
 			</div>
 		);

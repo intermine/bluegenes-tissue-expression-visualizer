@@ -1,4 +1,5 @@
 import queryData from './queryData';
 import getChartData from './chartData';
+import chart from './chart';
 
-export { queryData, getChartData };
+export { queryData, chart, getChartData };
