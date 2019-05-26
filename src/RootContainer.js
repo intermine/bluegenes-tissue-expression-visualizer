@@ -63,7 +63,10 @@ class RootContainer extends React.Component {
 								chartData={this.state.tissueExpChartData}
 								dataOptions={this.state.tissueExpOptions}
 							/>
-							<TissueExpChartControls changeOptions={this.changeOptions} />
+							<TissueExpChartControls
+								controlOptions={this.state.tissueExpOptions}
+								changeOptions={this.changeOptions}
+							/>
 						</>
 					) : (
 						<div className="loading-container">
