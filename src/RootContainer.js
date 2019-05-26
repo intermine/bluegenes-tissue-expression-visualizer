@@ -58,14 +58,18 @@ class RootContainer extends React.Component {
 			<div className="rootContainer">
 				<div className="firstGraph">
 					{this.state.tissueExpChartData ? (
-						<TissueExpChart
-							chartData={this.state.tissueExpChartData}
-							dataOptions={this.state.tissueExpOptions}
-						/>
+						<>
+							<TissueExpChart
+								chartData={this.state.tissueExpChartData}
+								dataOptions={this.state.tissueExpOptions}
+							/>
+							<TissueExpChartControls changeOptions={this.changeOptions} />
+						</>
 					) : (
-						<div className="loading" />
+						<div className="loading-container">
+							<span className="loading" />
+						</div>
 					)}
-					<TissueExpChartControls changeOptions={this.changeOptions} />
 				</div>
 				<div className="secondGraph">
 					<canvas className="graph" />

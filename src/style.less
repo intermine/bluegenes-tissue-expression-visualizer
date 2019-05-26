@@ -52,42 +52,49 @@
 		}
 	}
 
-	.loading {
+	.loading-container {
 		display: flex;
-		width: 3.5em;
-		height: 3.5em;
-		border: 3px solid transparent;
-		border-top-color: #21B4E7;
-		border-bottom-color: #21B4E7;
-		border-radius: 50%;
-		animation: spin 1.5s linear infinite;
-	}
-	
-	.loading:before {
-		content: '';
-		display: block;
-		margin: auto;
-		width: 0.75em;
-		height: 0.75em;
-		border: 3px solid #21B4E7;
-		border-radius: 50%;
-		animation: pulse 1s alternate ease-in-out infinite;
-	}
-	
-	@keyframes spin {
-		to {
-			transform: rotate(360deg);
+    justify-content: center;
+    margin: 24px;
+		align-items: center;
+		
+		.loading {
+			display: flex;
+			width: 9em;
+			height: 9em;
+			border: 3px solid transparent;
+			border-top-color: #9264A5;
+			border-bottom-color: #9264A5;
+			border-radius: 50%;
+			animation: spin 1.5s linear infinite;
 		}
-	}
-	
-	@keyframes pulse {
-		from {
-			transform: scale(0.5);
+		
+		.loading:before {
+			content: '';
+			display: block;
+			margin: auto;
+			width: 2em;
+			height: 2em;
+			border: 3px solid #9264A5;
+			border-radius: 50%;
+			animation: pulse 1s alternate ease-in-out infinite;
 		}
-		to {
-			transform: scale(1.5);
+		
+		@keyframes spin {
+			to {
+				transform: rotate(360deg);
+			}
 		}
+		
+		@keyframes pulse {
+			from {
+				transform: scale(0.5);
+			}
+			to {
+				transform: scale(1.5);
+			}
+		}
+
 	}
-	
 
 }
