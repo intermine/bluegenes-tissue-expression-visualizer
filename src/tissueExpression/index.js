@@ -1,5 +1,6 @@
-import queryData from './queryData';
-import renderChart from './renderChart';
+import chart from './chart';
 import controls from './controls';
+import queryData from './queryData';
+import getChartData from './chartData';
 
-export { queryData, renderChart, controls };
+export { queryData, chart, controls, getChartData };

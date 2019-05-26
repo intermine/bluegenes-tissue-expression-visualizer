@@ -1,8 +1,9 @@
 import React from 'react';
 import {
+	chart as TissueExpChart,
+	controls as TissueExpChartControls,
 	queryData as queryTissueExpData,
-	renderChart as renderTissueExpChart,
-	controls as TissueExpChartControls
+	getChartData as getTissueExpChartData
 } from './tissueExpression';
 
 class RootContainer extends React.Component {
@@ -10,10 +11,11 @@ class RootContainer extends React.Component {
 		super(props);
 		this.state = {
 			tissueExpData: null,
+			tissueExpChartData: null,
 			tissueExpOptions: {
-				sort: 'name',
-				scale: 'log',
-				val: 'enrichment'
+				sort: 'name', // name or signal
+				scale: 'log', // log or linear
+				val: 'enrichment' // enrichment or signal
 			}
 		};
 		this.changeOptions = this.changeOptions.bind(this);
@@ -26,32 +28,43 @@ class RootContainer extends React.Component {
 		} = this.props;
 		queryTissueExpData(geneId, serviceUrl).then(res => {
 			const results = res.microArrayResults;
-			this.setState({ tissueExpData: results }, () => {
-				// render graph when `canvas` is rendered
-				renderTissueExpChart(
-					this.firstGraph,
-					results,
-					this.state.tissueExpOptions
-				);
+			const chartData = getTissueExpChartData(
+				results,
+				this.state.tissueExpOptions
+			);
+			this.setState({
+				tissueExpData: results,
+				tissueExpChartData: chartData
 			});
 		});
 	}
 
-	changeOptions() {
-		// const { name, checked, value } = ev.target;
-		// console.log(name, checked, value);
+	changeOptions(ev) {
+		const { name, value } = ev.target;
+		const chartData = getTissueExpChartData(
+			this.state.tissueExpData,
+			Object.assign({}, this.state.tissueExpOptions, { [name]: value })
+		);
+		this.setState({
+			tissueExpOptions: Object.assign({}, this.state.tissueExpOptions, {
+				[name]: value
+			}),
+			tissueExpChartData: chartData
+		});
 	}
 
 	render() {
 		return (
 			<div className="rootContainer">
 				<div className="firstGraph">
-					<canvas
-						className="graph"
-						ref={r => {
-							this.firstGraph = r;
-						}}
-					/>
+					{this.state.tissueExpChartData ? (
+						<TissueExpChart
+							chartData={this.state.tissueExpChartData}
+							dataOptions={this.state.tissueExpOptions}
+						/>
+					) : (
+						<div className="loading" />
+					)}
 					<TissueExpChartControls changeOptions={this.changeOptions} />
 				</div>
 				<div className="secondGraph">
