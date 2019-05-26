@@ -1,4 +1,5 @@
 import React from 'react';
+import queryOrganism from './common/queryOrganism';
 import {
 	chart as TissueExpChart,
 	controls as TissueExpChartControls,
@@ -26,16 +27,23 @@ class RootContainer extends React.Component {
 			entity: { value: geneId },
 			serviceUrl
 		} = this.props;
-		queryTissueExpData(geneId, serviceUrl).then(res => {
-			const results = res.microArrayResults;
-			const chartData = getTissueExpChartData(
-				results,
-				this.state.tissueExpOptions
-			);
-			this.setState({
-				tissueExpData: results,
-				tissueExpChartData: chartData
+
+		// query for organism name once
+		queryOrganism(geneId, serviceUrl).then(orgName => {
+			// fetch data for tissue expression chart
+			queryTissueExpData(geneId, orgName, serviceUrl).then(res => {
+				const results = res.microArrayResults;
+				const chartData = getTissueExpChartData(
+					results,
+					this.state.tissueExpOptions
+				);
+				this.setState({
+					tissueExpData: results,
+					tissueExpChartData: chartData
+				});
 			});
+
+			// fetch data for expression by stage graph
 		});
 	}
 

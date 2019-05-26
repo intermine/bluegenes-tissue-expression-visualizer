@@ -1,27 +1,19 @@
 const geneToExpressionQuery = ({ geneId, orgName }) => ({
 	from: 'Gene',
 	select: [
-		'secondaryIdentifier',
+		'primaryIdentifier',
 		'symbol',
-		'microArrayResults.mRNASignal',
-		'microArrayResults.mRNASignalSEM',
-		'microArrayResults.presentCall',
-		'microArrayResults.enrichment',
-		'microArrayResults.affyCall',
-		'microArrayResults.dataSets.name',
-		'microArrayResults.tissue.name'
+		'rnaSeqResults.stage',
+		'rnaSeqResults.expressionScore',
+		'rnaSeqResults.expressionLevel'
 	],
 	orderBy: [
 		{
-			path: 'secondaryIdentifier',
+			path: 'rnaSeqResults.stage',
 			direction: 'ASC'
 		}
 	],
 	where: [
-		{
-			path: 'microArrayResults',
-			type: 'FlyAtlasResult'
-		},
 		{
 			path: 'organism.name',
 			op: '=',
