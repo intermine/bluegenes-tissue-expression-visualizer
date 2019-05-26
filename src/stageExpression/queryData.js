@@ -1,4 +1,4 @@
-const geneToExpressionQuery = ({ geneId, orgName }) => ({
+const stageExpressionQuery = ({ geneId, orgName }) => ({
 	from: 'Gene',
 	select: [
 		'primaryIdentifier',
@@ -32,7 +32,7 @@ function queryData(geneId, orgName, serviceUrl) {
 		// eslint-disable-next-line
 		const service = new imjs.Service({ root: serviceUrl });
 		service
-			.records(geneToExpressionQuery({ geneId, orgName }))
+			.records(stageExpressionQuery({ geneId, orgName }))
 			.then(data => resolve(data[0]))
 			.catch(reject);
 	});

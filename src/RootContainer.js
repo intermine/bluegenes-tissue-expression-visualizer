@@ -6,6 +6,10 @@ import {
 	queryData as queryTissueExpData,
 	getChartData as getTissueExpChartData
 } from './tissueExpression';
+import {
+	queryData as queryStageExpression,
+	getChartData as getStageExpressionChartData
+} from './stageExpression';
 
 class RootContainer extends React.Component {
 	constructor(props) {
@@ -44,6 +48,11 @@ class RootContainer extends React.Component {
 			});
 
 			// fetch data for expression by stage graph
+			queryStageExpression(geneId, orgName, serviceUrl).then(res => {
+				const results = res.rnaSeqResults;
+				getStageExpressionChartData(results);
+				// console.log(chartData);
+			});
 		});
 	}
 
