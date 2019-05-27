@@ -52,6 +52,11 @@ class StageExpressionChart extends React.Component {
 								fontColor: '#000'
 							}
 						}
+					],
+					xAxes: [
+						{
+							ticks: { stepSize: 3, beginAtZero: true, display: false }
+						}
 					]
 				}
 			}
