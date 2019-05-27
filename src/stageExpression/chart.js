@@ -81,7 +81,9 @@ class StageExpressionChart extends React.Component {
 							ticks: { stepSize: 3, beginAtZero: true, display: false }
 						}
 					]
-				}
+				},
+				maintainAspectRatio: true,
+				responsive: true
 			}
 		});
 	}
@@ -89,8 +91,7 @@ class StageExpressionChart extends React.Component {
 	render() {
 		return (
 			<canvas
-				height="440px"
-				className="graph"
+				height={440}
 				ref={r => {
 					this.graph = r;
 				}}
