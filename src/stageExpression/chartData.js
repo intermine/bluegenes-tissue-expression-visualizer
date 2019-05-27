@@ -2,7 +2,7 @@ function ExpressionModel(type, color, range) {
 	return { type, color, range };
 }
 
-const Expressions = {
+export const Expressions = {
 	'No / Extremely low expression': ExpressionModel(0, '#FFF', '0 to 10'),
 	'Very low expression': ExpressionModel(4, '#D9C5E9', '11 to 100'),
 	'Low expression': ExpressionModel(6, '#C8ABDF', '101 to 400'),

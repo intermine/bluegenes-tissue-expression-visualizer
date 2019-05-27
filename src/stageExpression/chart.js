@@ -1,5 +1,6 @@
 import React from 'react';
 import Chart from 'chart.js';
+import { Expressions } from './chartData';
 
 class StageExpressionChart extends React.Component {
 	componentDidMount() {
@@ -26,6 +27,28 @@ class StageExpressionChart extends React.Component {
 					position: 'top',
 					fontStyle: 'bold',
 					fontColor: '#000'
+				},
+				legend: {
+					position: 'top',
+					labels: {
+						generateLabels() {
+							// get labels from Expressions Object already made in `chartData.js`
+							const labels = Object.keys(Expressions).map(key => {
+								return {
+									text: `${key}: ${Expressions[key].range}`,
+									fillStyle: Expressions[key].color,
+									strokeStyle: Expressions[key].color,
+									lineWidth: 1,
+									hidden: false,
+									index: 0
+								};
+							});
+							labels.shift();
+							return labels;
+						}
+					},
+					// override the chartjs defualt click function
+					onClick() {}
 				},
 				tooltips: {
 					callbacks: {
