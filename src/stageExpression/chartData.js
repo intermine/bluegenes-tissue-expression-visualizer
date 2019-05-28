@@ -7,7 +7,8 @@ export const Expressions = {
 	'Very low expression': ExpressionModel(4, '#D9C5E9', '11 to 100'),
 	'Low expression': ExpressionModel(6, '#C8ABDF', '101 to 400'),
 	'Moderate expression': ExpressionModel(8, '#B48FD4', '401 to 1400'),
-	'Moderately high expression': ExpressionModel(11, '#A373CA', '1401 to 4000')
+	'Moderately high expression': ExpressionModel(11, '#A373CA', '1401 to 4000'),
+	'High expression': ExpressionModel(12, '#945CC2', '4001 to 10000')
 };
 
 function getChartData(results) {
