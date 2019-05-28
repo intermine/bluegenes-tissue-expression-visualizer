@@ -1,33 +1,31 @@
 .bluegenesTissueExpressionVisualizer {
-  // put all your css classes inside this block. Keeping them
-  // nested under the tool name prevents your styles from
-  // leaking out and affecting other elements by accident.
+	// put all your css classes inside this block. Keeping them
+	// nested under the tool name prevents your styles from
+	// leaking out and affecting other elements by accident.
 
-  // If you want to learn more about LESS, visit lesscss.org.
+	// If you want to learn more about LESS, visit lesscss.org.
 
-  // to build your css, run `lessc src/style.css dist/style.css --clean-css`
-  // in your terminal
+	// to build your css, run `lessc src/style.css dist/style.css --clean-css`
+	// in your terminal
 
-
-  // this is just an example class for root div element, you may modify or delete it as per your usecase
+	// this is just an example class for root div element, you may modify or delete it as per your usecase
 	.rootContainer {
 		border: 1px solid black;
 		padding: 20px;
 	}
 
 	.firstGraph {
-		
 		margin-bottom: 10%;
 
 		.controls {
 			display: grid;
 			grid-template-columns: 33% 33% 33%;
 			grid-template-rows: 100% 100%;
-			
+
 			div {
 				display: flex;
 				align-items: center;
-				border: 1px solid #DCC8E2;
+				border: 1px solid #dcc8e2;
 				font-family: sans-serif;
 				font-size: 12px;
 				input {
@@ -43,12 +41,11 @@
 					cursor: pointer;
 				}
 			}
-	
+
 			div:nth-child(even) {
-				background: #FDF8FE;
+				background: #fdf8fe;
 				cursor: pointer;
 			}
-	
 		}
 	}
 
@@ -57,47 +54,47 @@
 
 	.loading-container {
 		display: flex;
-    justify-content: center;
-    margin: 24px;
-		align-items: center;
-		
-		.loading {
+		justify-content: center;
+		margin: 40px;
+		div {
 			display: flex;
-			width: 9em;
-			height: 9em;
-			border: 3px solid transparent;
-			border-top-color: #9264A5;
-			border-bottom-color: #9264A5;
-			border-radius: 50%;
-			animation: spin 1.5s linear infinite;
-		}
-		
-		.loading:before {
-			content: '';
-			display: block;
-			margin: auto;
+			flex-flow: row nowrap;
+			align-items: center;
+			justify-content: space-between;
 			width: 2em;
-			height: 2em;
-			border: 3px solid #9264A5;
-			border-radius: 50%;
-			animation: pulse 1s alternate ease-in-out infinite;
-		}
-		
-		@keyframes spin {
-			to {
-				transform: rotate(360deg);
+			font-size: 40px;
+			span {
+				width: 0.3em;
+				height: 1em;
+				background-color: #a373ca;
 			}
-		}
-		
-		@keyframes pulse {
-			from {
-				transform: scale(0.5);
-			}
-			to {
-				transform: scale(1.5);
-			}
-		}
 
+			span:nth-of-type(1) {
+				animation: grow 1s -0.45s ease-in-out infinite;
+			}
+
+			span:nth-of-type(2) {
+				animation: grow 1s -0.3s ease-in-out infinite;
+			}
+
+			span:nth-of-type(3) {
+				animation: grow 1s -0.15s ease-in-out infinite;
+			}
+
+			span:nth-of-type(4) {
+				animation: grow 1s 0.15s ease-in-out infinite;
+			}
+
+			@keyframes grow {
+				0%,
+				100% {
+					transform: scaleY(1);
+				}
+
+				50% {
+					transform: scaleY(2);
+				}
+			}
+		}
 	}
-
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import queryOrganism from './common/queryOrganism';
+import Loader from './common/loader';
 import {
 	chart as TissueExpChart,
 	controls as TissueExpChartControls,
@@ -87,9 +88,7 @@ class RootContainer extends React.Component {
 							/>
 						</>
 					) : (
-						<div className="loading-container">
-							<span className="loading" />
-						</div>
+						<Loader />
 					)}
 				</div>
 				<div className="secondGraph">
@@ -98,7 +97,7 @@ class RootContainer extends React.Component {
 							chartData={this.state.stageExpressionChartData}
 						/>
 					) : (
-						'Loading...'
+						<Loader />
 					)}
 				</div>
 			</div>
