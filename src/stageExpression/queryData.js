@@ -27,10 +27,11 @@ const stageExpressionQuery = ({ geneId, orgName }) => ({
 	]
 });
 
-function queryData(geneId, orgName, serviceUrl) {
+// eslint-disable-next-line
+function queryData(geneId, orgName, serviceUrl, imjsClient = imjs) {
 	return new Promise((resolve, reject) => {
 		// eslint-disable-next-line
-		const service = new imjs.Service({ root: serviceUrl });
+		const service = new imjsClient.Service({ root: serviceUrl });
 		service
 			.records(stageExpressionQuery({ geneId, orgName }))
 			.then(data => resolve(data[0]))
