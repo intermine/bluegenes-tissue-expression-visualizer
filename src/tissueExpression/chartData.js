@@ -37,8 +37,8 @@ function getChartData(results, dataOptions) {
 
 		// get hover text for this tissue bar
 		let regulationText = 'Same as Whole Fly';
-		if (result.affCall === 'Up') regulationText = 'Up Regulated';
-		else if (result.affCall === 'Down') regulationText = 'Down Regulated';
+		if (result.affyCall === 'Up') regulationText = 'Up Regulated';
+		else if (result.affyCall === 'Down') regulationText = 'Down Regulated';
 		regulationText = `${regulationText}: (signal: ${
 			result.mRNASignal
 		}, enrichment: ${result.enrichment})`;

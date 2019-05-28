@@ -1,5 +1,5 @@
 import React from 'react';
-import Chart from 'chart.js/dist/Chart.min.js';
+import Chart from 'chart.js';
 
 class TissueExpressionChart extends React.Component {
 	componentDidMount() {
@@ -116,7 +116,9 @@ class TissueExpressionChart extends React.Component {
 							}
 						}
 					]
-				}
+				},
+				maintainAspectRatio: true,
+				responsive: true
 			}
 		});
 	}
@@ -136,6 +138,7 @@ class TissueExpressionChart extends React.Component {
 	render() {
 		return (
 			<canvas
+				height={this.props.chartData.tissueNames.length > 30 ? '260px' : ''}
 				className="graph"
 				ref={r => {
 					this.graph = r;
