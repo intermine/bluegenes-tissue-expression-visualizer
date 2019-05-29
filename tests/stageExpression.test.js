@@ -1,5 +1,8 @@
+const React = require('react');
+const ReactDOM = require('react-dom');
 const imjs = require('imjs');
 const queryStageExpData = require('../src/stageExpression').queryData;
+const Chart = require('../src/stageExpression').chart;
 
 describe('Expression By Stage Module', () => {
 	const mockData = {
@@ -43,6 +46,15 @@ describe('Expression By Stage Module', () => {
 			);
 
 			expect(queryRes).rejects.toBe('No data found!');
+		});
+	});
+
+	describe('component', () => {
+		test('should render a canvas element', () => {
+			const elem = document.createElement('div');
+			ReactDOM.render(<Chart />, elem);
+			const html = elem.innerHTML;
+			expect(html).toContain('<canvas');
 		});
 	});
 });

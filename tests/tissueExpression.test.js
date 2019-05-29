@@ -1,5 +1,8 @@
+const React = require('react');
+const ReactDOM = require('react-dom');
 const imjs = require('imjs');
 const queryExpData = require('../src/tissueExpression').queryData;
+const Chart = require('../src/tissueExpression').chart;
 
 describe('Tissue Expression Module', () => {
 	const mockData = {
@@ -44,6 +47,15 @@ describe('Tissue Expression Module', () => {
 			);
 
 			return expect(queryRes).rejects.toBe('No data found!');
+		});
+	});
+
+	describe('component', () => {
+		test('should render a canvas element', () => {
+			const elem = document.createElement('div');
+			ReactDOM.render(<Chart />, elem);
+			const html = elem.innerHTML;
+			expect(html).toContain('<canvas');
 		});
 	});
 });
