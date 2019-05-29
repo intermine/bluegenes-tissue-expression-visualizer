@@ -1,7 +1,7 @@
 const imjs = require('imjs');
-const queryStageExpData = require('../../src/stageExpression').queryData;
+const queryExpData = require('../../src/tissueExpression').queryData;
 
-describe('Expression By Stage Module', () => {
+describe('Tissue Expression Module', () => {
 	const mockData = {
 		geneId: '1000005',
 		orgName: 'Drosophila melanogaster',
@@ -10,7 +10,7 @@ describe('Expression By Stage Module', () => {
 
 	describe('query', () => {
 		test('should return a promise that resolves with correct result json', () => {
-			const queryRes = queryStageExpData(
+			const queryRes = queryExpData(
 				mockData.geneId,
 				mockData.orgName,
 				mockData.serviceUrl,
@@ -18,15 +18,16 @@ describe('Expression By Stage Module', () => {
 			);
 
 			return queryRes.then(res => {
-				expect(res).toHaveProperty('rnaSeqResults');
-				expect(res.rnaSeqResults).toBeInstanceOf(Array);
+				expect(res).toHaveProperty('microArrayResults');
+				expect(res.microArrayResults).toBeInstanceOf(Array);
 
-				const firstVal = res.rnaSeqResults[0];
-				expect(firstVal).toHaveProperty('class');
-				expect(firstVal).toHaveProperty('expressionLevel');
-				expect(firstVal).toHaveProperty('expressionScore');
+				const firstVal = res.microArrayResults[0];
+				expect(firstVal).toHaveProperty('enrichment');
+				expect(firstVal).toHaveProperty('affyCall');
+				expect(firstVal).toHaveProperty('tissue');
+				expect(firstVal).toHaveProperty('mRNASignal');
 				expect(firstVal).toHaveProperty('objectId');
-				expect(firstVal).toHaveProperty('stage');
+				expect(firstVal).toHaveProperty('presentCall');
 			});
 		});
 
@@ -35,14 +36,14 @@ describe('Expression By Stage Module', () => {
 				geneId: '1100000' // some wrong gene id
 			});
 
-			const queryRes = queryStageExpData(
+			const queryRes = queryExpData(
 				dataWithInvalidGeneId.geneId,
 				dataWithInvalidGeneId.orgName,
 				dataWithInvalidGeneId.serviceUrl,
 				imjs
 			);
 
-			expect(queryRes).rejects.toBe('No data found!');
+			return expect(queryRes).rejects.toBe('No data found!');
 		});
 	});
 });
