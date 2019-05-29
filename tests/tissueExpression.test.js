@@ -1,5 +1,5 @@
 const imjs = require('imjs');
-const queryExpData = require('../../src/tissueExpression').queryData;
+const queryExpData = require('../src/tissueExpression').queryData;
 
 describe('Tissue Expression Module', () => {
 	const mockData = {

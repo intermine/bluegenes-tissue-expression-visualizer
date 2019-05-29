@@ -1,5 +1,5 @@
 const imjs = require('imjs');
-const queryStageExpData = require('../../src/stageExpression').queryData;
+const queryStageExpData = require('../src/stageExpression').queryData;
 
 describe('Expression By Stage Module', () => {
 	const mockData = {
