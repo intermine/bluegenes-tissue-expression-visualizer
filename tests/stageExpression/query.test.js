@@ -7,24 +7,42 @@ describe('Expression By Stage Module', () => {
 		orgName: 'Drosophila melanogaster',
 		serviceUrl: 'http://www.flymine.org/flymine/service'
 	};
-	test('should return a promise that resolves with correct result json', () => {
-		const queryRes = queryStageExpData(
-			mockData.geneId,
-			mockData.orgName,
-			mockData.serviceUrl,
-			imjs
-		);
 
-		return queryRes.then(res => {
-			expect(res).toHaveProperty('rnaSeqResults');
-			expect(res.rnaSeqResults).toBeInstanceOf(Array);
+	describe('query', () => {
+		test('should return a promise that resolves with correct result json', () => {
+			const queryRes = queryStageExpData(
+				mockData.geneId,
+				mockData.orgName,
+				mockData.serviceUrl,
+				imjs
+			);
 
-			const firstVal = res.rnaSeqResults[0];
-			expect(firstVal).toHaveProperty('class');
-			expect(firstVal).toHaveProperty('expressionLevel');
-			expect(firstVal).toHaveProperty('expressionScore');
-			expect(firstVal).toHaveProperty('objectId');
-			expect(firstVal).toHaveProperty('stage');
+			return queryRes.then(res => {
+				expect(res).toHaveProperty('rnaSeqResults');
+				expect(res.rnaSeqResults).toBeInstanceOf(Array);
+
+				const firstVal = res.rnaSeqResults[0];
+				expect(firstVal).toHaveProperty('class');
+				expect(firstVal).toHaveProperty('expressionLevel');
+				expect(firstVal).toHaveProperty('expressionScore');
+				expect(firstVal).toHaveProperty('objectId');
+				expect(firstVal).toHaveProperty('stage');
+			});
+		});
+
+		test('should throw error when data corresponding to organism is not found', () => {
+			const dataWithInvalidGeneId = Object.assign({}, mockData, {
+				geneId: '1100000'
+			});
+
+			const queryRes = queryStageExpData(
+				dataWithInvalidGeneId.geneId,
+				dataWithInvalidGeneId.orgName,
+				dataWithInvalidGeneId.serviceUrl,
+				imjs
+			);
+
+			expect(queryRes).rejects.toBe('No data found!');
 		});
 	});
 });

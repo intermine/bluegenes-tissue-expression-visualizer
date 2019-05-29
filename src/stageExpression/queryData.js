@@ -34,7 +34,10 @@ function queryData(geneId, orgName, serviceUrl, imjsClient = imjs) {
 		const service = new imjsClient.Service({ root: serviceUrl });
 		service
 			.records(stageExpressionQuery({ geneId, orgName }))
-			.then(data => resolve(data[0]))
+			.then(data => {
+				if (data && data.length) resolve(data[0]);
+				else reject('No data found!');
+			})
 			.catch(reject);
 	});
 }
