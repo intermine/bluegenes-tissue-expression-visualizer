@@ -10,15 +10,19 @@ const geneToOrgQuery = geneId => ({
 	]
 });
 
-function queryOrganism(geneId, serviceUrl) {
-	return new Promise(resolve => {
-		// eslint-disable-next-line
-		const service = new imjs.Service({ root: serviceUrl });
-		service.records(geneToOrgQuery(geneId)).then(data => {
-			if (data.length === 0) throw new Error('No organism associated!');
-			const orgName = data[0].organism.name;
-			resolve(orgName);
-		});
+// dependency injection implmentation - imjsClient
+// eslint-disable-next-line
+function queryOrganism(geneId, serviceUrl, imjsClient = imjs) {
+	return new Promise((resolve, reject) => {
+		const service = new imjsClient.Service({ root: serviceUrl });
+		service
+			.records(geneToOrgQuery(geneId))
+			.then(data => {
+				if (data.length === 0) throw new Error('No organism associated!');
+				const orgName = data[0].organism.name;
+				resolve(orgName);
+			})
+			.catch(() => reject('No associated organism found!'));
 	});
 }
 

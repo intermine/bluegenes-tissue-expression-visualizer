@@ -138,7 +138,11 @@ class TissueExpressionChart extends React.Component {
 	render() {
 		return (
 			<canvas
-				height={this.props.chartData.tissueNames.length > 30 ? '260px' : ''}
+				height={
+					(this.props.chartData && this.props.chartData.tissueNames.length) > 30
+						? '260px'
+						: ''
+				}
 				className="graph"
 				ref={r => {
 					this.graph = r;

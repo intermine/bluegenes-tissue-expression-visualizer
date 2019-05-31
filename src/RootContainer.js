@@ -29,6 +29,12 @@ class RootContainer extends React.Component {
 	}
 
 	componentDidMount() {
+		// when testing via jest, don't do all the calcs
+		if (this.props.testing) return;
+
+		if (!this.props.entity || !this.props.serviceUrl)
+			throw new Error('No `entity` or `serviceUrl` passed as prop');
+
 		const {
 			entity: { value: geneId },
 			serviceUrl
