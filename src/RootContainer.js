@@ -23,7 +23,8 @@ class RootContainer extends React.Component {
 				sort: 'name', // name or signal
 				scale: 'log', // log or linear
 				val: 'enrichment' // enrichment or signal
-			}
+			},
+			error: null
 		};
 		this.changeOptions = this.changeOptions.bind(this);
 	}
@@ -41,27 +42,37 @@ class RootContainer extends React.Component {
 		} = this.props;
 
 		// query for organism name once
-		queryOrganism(geneId, serviceUrl).then(orgName => {
-			// fetch data for tissue expression chart
-			queryTissueExpData(geneId, orgName, serviceUrl).then(res => {
-				const results = res.microArrayResults;
-				const chartData = getTissueExpChartData(
-					results,
-					this.state.tissueExpOptions
-				);
-				this.setState({
-					tissueExpData: results,
-					tissueExpChartData: chartData
-				});
-			});
+		queryOrganism(geneId, serviceUrl)
+			.then(orgName => {
+				// fetch data for tissue expression chart
+				queryTissueExpData(geneId, orgName, serviceUrl)
+					.then(res => {
+						const results = res.microArrayResults;
+						const chartData = getTissueExpChartData(
+							results,
+							this.state.tissueExpOptions
+						);
+						this.setState({
+							tissueExpData: results,
+							tissueExpChartData: chartData
+						});
+					})
+					.catch(() =>
+						this.setState({ error: 'No Tissue Expression Data Found!' })
+					);
 
-			// fetch data for expression by stage graph
-			queryStageExpression(geneId, orgName, serviceUrl).then(res => {
-				const results = res.rnaSeqResults;
-				const chartData = getStageExpressionChartData(results);
-				this.setState({ stageExpressionChartData: chartData });
-			});
-		});
+				// fetch data for expression by stage graph
+				queryStageExpression(geneId, orgName, serviceUrl)
+					.then(res => {
+						const results = res.rnaSeqResults;
+						const chartData = getStageExpressionChartData(results);
+						this.setState({ stageExpressionChartData: chartData });
+					})
+					.catch(() =>
+						this.setState({ error: 'No Expression By Stage Data Found!' })
+					);
+			})
+			.catch(error => this.setState({ error }));
 	}
 
 	changeOptions(ev) {
@@ -79,6 +90,10 @@ class RootContainer extends React.Component {
 	}
 
 	render() {
+		if (this.state.error) {
+			return <div className="rootContainer error">{this.state.error}</div>;
+		}
+
 		return (
 			<div className="rootContainer">
 				<div className="firstGraph">

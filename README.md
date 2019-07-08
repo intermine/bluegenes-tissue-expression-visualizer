@@ -1,9 +1,10 @@
 #  Bluegenes Tissue Expression Visualizer
 
-FIXME: fill out a description of your tool here! :)
+BlueGenes Tissue Expression Visualizer is a tool made for [BlueGenes](http://bluegenes.apps.intermine.org) following BlueGenes Tool API. It can help users (biologists) to visualize `tissue expression` and `expression by stage` with help of expression charts. It can also be used as standalone tool to integrate in any web application.
 
-## Licence
+# NPM Package
 
+[@intermine/bluegenes-tissue-expression-visualizer](https://www.npmjs.com/package/@intermine/bluegenes-tissue-expression-visualizer)
 
 ### To set up locally for development
 
