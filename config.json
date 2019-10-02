@@ -3,6 +3,7 @@
   "classes":
     ["Gene"]
   ,
+  "depends": ["RNASeqResult"],
   "columnMapping": {
     "Gene": {
       "id": "primaryIdentifier"
