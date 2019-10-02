@@ -1,6 +1,6 @@
 {
   "name": "@intermine/bluegenes-tissue-expression-visualizer",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "src/index.js",
   "description": "",
   "homepage": "http://www.intermine.org",
