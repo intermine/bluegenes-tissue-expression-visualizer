@@ -3,6 +3,7 @@
   "classes":
     ["Gene"]
   ,
+  "depends": ["RNASeqResult", "MicroArrayResult"],
   "columnMapping": {
     "Gene": {
       "id": "primaryIdentifier"

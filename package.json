@@ -1,8 +1,8 @@
 {
   "name": "@intermine/bluegenes-tissue-expression-visualizer",
-  "version": "1.0.2",
+  "version": "1.0.7",
   "main": "src/index.js",
-  "description": "",
+  "description": "Visualize gene expression by tissue and stage with help of expression charts. Easily see which expressions are up- or down-regulated.",
   "homepage": "http://www.intermine.org",
   "scripts": {
     "test": "jest",
