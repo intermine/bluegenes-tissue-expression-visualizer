@@ -6,9 +6,9 @@ const Chart = require('../src/stageExpression').chart;
 
 describe('Expression By Stage Module', () => {
 	const mockData = {
-		geneId: '1000005',
+		geneId: '1007357',
 		orgName: 'Drosophila melanogaster',
-		serviceUrl: 'http://www.flymine.org/flymine/service'
+		serviceUrl: 'https://www.flymine.org/flymine'
 	};
 
 	describe('query', () => {
