@@ -15,7 +15,11 @@ describe('main', () => {
 	test('should render something (atleast a div) into the `elem` passed', () => {
 		const el = document.createElement('div');
 		ReactDOM.render(
-			<RootContainer entity={{}} serviceUrl="sdgjknsdg" testing={true} />,
+			<RootContainer
+				entity={{}}
+				serviceUrl="https://www.flymine.org/flymine"
+				testing={true}
+			/>,
 			el
 		);
 		expect(el.innerHTML).toContain('div');
