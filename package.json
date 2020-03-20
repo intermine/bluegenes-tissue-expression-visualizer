@@ -5,8 +5,8 @@
   "description": "Visualize gene expression by tissue and stage with help of expression charts. Easily see which expressions are up- or down-regulated.",
   "homepage": "http://www.intermine.org",
   "repository": {
-   "type": "git",
-   "url": "https://github.com/intermine/bluegenes-tissue-expression-visualizer"
+    "type": "git",
+    "url": "https://github.com/intermine/bluegenes-tissue-expression-visualizer"
   },
   "scripts": {
     "test": "jest",
@@ -37,6 +37,7 @@
   "license": "MIT",
   "dependencies": {
     "chart.js": "^2.8.0",
+    "es6-promise": "^4.2.8",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
