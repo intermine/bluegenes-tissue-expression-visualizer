@@ -44,8 +44,7 @@ npm run build
 ##### Developing:
 Run each of these commands in separate terminals:
 
-To rebuild your js every time you save and to serve your page at [http://localhost:3456](http://localhost:3456):
-
+To run a development build of the project at https://localhost:3456
 ```bash
 npm run dev
 ```
