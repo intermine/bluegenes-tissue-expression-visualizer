@@ -6,7 +6,7 @@ describe('queryOrganism', () => {
 		// some fake gene id and test service url
 		const mockData = {
 			geneId: '1007357',
-			serviceUrl: 'http://www.flymine.org/flymine',
+			serviceUrl: 'https://www.flymine.org/flymine',
 			result: 'Drosophila melanogaster'
 		};
 		const queryRes = queryOrgName(mockData.geneId, mockData.serviceUrl, imjs);

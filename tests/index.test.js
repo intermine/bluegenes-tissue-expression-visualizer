@@ -17,7 +17,7 @@ describe('main', () => {
 		ReactDOM.render(
 			<RootContainer
 				entity={{}}
-				serviceUrl="http://www.flymine.org/flymine"
+				serviceUrl="https://www.flymine.org/flymine"
 				testing={true}
 			/>,
 			el
