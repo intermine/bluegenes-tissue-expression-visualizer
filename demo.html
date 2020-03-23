@@ -29,21 +29,15 @@
 			document.location.reload();
     });
 	</script>
-
-	<style>
-		#yourDiv {
-			width: 70%;
-			height: 2000px;
-		}
-	</style>
+	</script>
 </head>
 
 <body>
-  <div class="bluegenesTissueExpressionVisualizer" id='yourDiv' />
+  <div class="bluegenesTissueExpressionVisualizer main-container" id='visualizer' />
   <script>
     window.onload = function() {
 	    //The element to attach the viewer to. Must be an existing DOM element
-    	var elem = document.getElementById('yourDiv'),
+    	var elem = document.getElementById('visualizer'),
     		//InterMine service, including URL and token.
     		imURL = {
     			root: 'https://www.flymine.org/flymine',

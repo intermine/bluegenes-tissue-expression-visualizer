@@ -8,7 +8,7 @@ describe('Tissue Expression Module', () => {
 	const mockData = {
 		geneId: '1007357',
 		orgName: 'Drosophila melanogaster',
-		serviceUrl: 'https://www.flymine.org/flymine'
+		serviceUrl: 'http://www.flymine.org/flymine'
 	};
 
 	describe('query', () => {

@@ -1,22 +1,24 @@
 import React from 'react';
 
-const Cell = ({ name, text, value, checked, onChange }) => (
-	<div>
+const Cell = ({ id, name, text, value, checked, onChange }) => (
+	<label htmlFor={id}>
 		<input
 			type="radio"
+			id={id}
 			name={name}
 			value={value}
 			onChange={onChange}
 			checked={checked}
 		/>
 		<span>{text}</span>
-	</div>
+	</label>
 );
 
 function TisuseExpressionControls({ controlOptions, changeOptions }) {
 	return (
 		<div className="controls">
 			<Cell
+				id="logarithmic-scale"
 				name="scale"
 				value="log"
 				text="Logarithmic Scale"
@@ -24,6 +26,7 @@ function TisuseExpressionControls({ controlOptions, changeOptions }) {
 				checked={controlOptions['scale'] === 'log'}
 			/>
 			<Cell
+				id="order-by-name"
 				name="sort"
 				value="name"
 				text="Order By Name"
@@ -31,6 +34,7 @@ function TisuseExpressionControls({ controlOptions, changeOptions }) {
 				checked={controlOptions['sort'] === 'name'}
 			/>
 			<Cell
+				id="show-enrichment"
 				name="val"
 				value="enrichment"
 				text="Show Enrichment"
@@ -38,6 +42,7 @@ function TisuseExpressionControls({ controlOptions, changeOptions }) {
 				checked={controlOptions['val'] === 'enrichment'}
 			/>
 			<Cell
+				id="linear-scale"
 				name="scale"
 				value="linear"
 				text="Linear Scale"
@@ -45,6 +50,7 @@ function TisuseExpressionControls({ controlOptions, changeOptions }) {
 				checked={controlOptions['scale'] === 'linear'}
 			/>
 			<Cell
+				id="order-by-signal"
 				name="sort"
 				value="signal"
 				text="Order By Signal"
@@ -52,6 +58,7 @@ function TisuseExpressionControls({ controlOptions, changeOptions }) {
 				checked={controlOptions['sort'] === 'signal'}
 			/>
 			<Cell
+				id="show-signal-strength"
 				name="val"
 				value="signal"
 				text="Show Signal Strength"

@@ -11,7 +11,13 @@
 	// this is just an example class for root div element, you may modify or delete it as per your usecase
 	.rootContainer {
 		border: 1px solid black;
+		height: 100%;
+		margin: 0 auto;
+		min-width: 700px;
+		max-width: 1200px;
+		margin: 0 auto;
 		padding: 20px;
+		width: 100%;
 	}
 
 	.error {
@@ -30,12 +36,14 @@
 			grid-template-columns: 33% 33% 33%;
 			grid-template-rows: 100% 100%;
 
-			div {
+			label {
 				display: flex;
 				align-items: center;
 				border: 1px solid #dcc8e2;
 				font-family: sans-serif;
 				font-size: 12px;
+				cursor: pointer;
+
 				input {
 					cursor: pointer;
 					margin-left: 40px;
@@ -48,7 +56,7 @@
 				}
 			}
 
-			div:nth-child(even) {
+			label:nth-child(even) {
 				background: #fdf8fe;
 				cursor: pointer;
 			}
