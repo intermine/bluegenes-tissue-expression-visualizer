@@ -1,3 +1,5 @@
+
+![Logo Intermine](imgs/intermine-300x37.png)
 #  Bluegenes Tissue Expression Visualizer
 
 BlueGenes Tissue Expression Visualizer is a tool made for [BlueGenes](http://bluegenes.apps.intermine.org) following BlueGenes Tool API. It can help users (biologists) to visualize `tissue expression` and `expression by stage` with help of expression charts. It can also be used as standalone tool to integrate in any web application.
@@ -42,13 +44,9 @@ npm run build
 ##### Developing:
 Run each of these commands in separate terminals:
 
-To rebuild your js every time you save:
-
+To run a development build of the project at http://localhost:3456
 ```bash
 npm run dev
 ```
 
-To serve your page at [http://localhost:3456](http://localhost:3456):
-```bash
-npm run server
-```
+
