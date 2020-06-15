@@ -1,8 +1,6 @@
 {
-  "accepts": ["id"]  ,
-  "classes":
-    ["Gene"]
-  ,
+  "accepts": ["id"],
+  "classes": ["Gene"],
   "depends": ["RNASeqResult", "MicroArrayResult"],
   "columnMapping": {
     "Gene": {
@@ -19,5 +17,6 @@
   "toolName" : {
     "human" :"Bluegenes Tissue Expression Visualizer",
     "cljs" :"bluegenesTissueExpressionVisualizer"    
-  }
+  },
+  "version": 2
 }
