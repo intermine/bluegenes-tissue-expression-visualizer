@@ -10,8 +10,7 @@
       "id": "primaryAccession"
     }
   },
-  "description" : "Heat map of RNA-seq expression data for your list.  HumanMine includes a number of RNA-seq expression data sets from different sources.   All show expression across different human tissues.  Toggle between the data sets using the buttons above the heat map.  You can select data from GTex, Protein Atlas or the Illumina Body Map.  Scroll right to see the full set of tissues for each gene.  Expression values can be viewed as linear or log and are binned into three expression levels, low, medium and high.  Note that the values between the data sets are not directly comparable.  The Gtex and Protein Atlas values are TPM (transcripts per million) and the Illumina Body Map are FPKM (Fragments Per Kilobase of transcript per Million mapped reads).",
-  "files" : {
+    "files" : {
     "css" : "dist/style.css",
     "js" : "dist/bundle.js"
   },
